@@ -67,11 +67,10 @@ def quadratic_multiply(x, y):
 
     return bit_shift(BinaryNumber(rec_mult_1), len(x.binary_vec)).decimal_val + bit_shift(BinaryNumber(rec_mult_2 + rec_mult_3), len(x.binary_vec)//2).decimal_val + rec_mult_4
 # quadratic_multiply
-print(quadratic_multiply(BinaryNumber(9), BinaryNumber(13)))
+print(f"Quadratic Multiply of {BinaryNumber(9)} and {BinaryNumber(13)} is", quadratic_multiply(BinaryNumber(9), BinaryNumber(13)))
 
 def subquadratic_multiply(x, y):
     # print("x: ", x, "\ty: ", y)
-    ### TODO
 
     # base case: single digit >>> if one is 0 then 0, if both are 1 then 1
     if x.decimal_val == 0 or y.decimal_val == 0:
@@ -91,7 +90,7 @@ def subquadratic_multiply(x, y):
 
     return bit_shift(BinaryNumber(rec_mult_1), len(x.binary_vec)).decimal_val + bit_shift(BinaryNumber(rec_mult_2-rec_mult_1-rec_mult_3), len(x.binary_vec)//2).decimal_val + rec_mult_3
 # subquadratic_multiply
-print(subquadratic_multiply(BinaryNumber(9), BinaryNumber(13)))
+print(f"Subquadratic Multiply of {BinaryNumber(9)} and {BinaryNumber(13)} is", subquadratic_multiply(BinaryNumber(9), BinaryNumber(13)))
 
 ## Feel free to add your own tests here.
 def test_multiply():
