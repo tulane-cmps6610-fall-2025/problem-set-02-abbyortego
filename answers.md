@@ -124,11 +124,19 @@ b. Work and Span: $T(n) = T(n-1) + \log n$
     - Number of levels is $n$ and the max cost per level is $\log n$ 
   - $\mathcal{O}(n \log n)$
 
-**c.** Work and Span: $T(n) = T(\frac{n}{3}) + T(\frac{2n}{3}) + c_1n^{1.1} + c_2$
+c. Work and Span: $T(n) = T(\frac{n}{3}) + T(\frac{2n}{3}) + c_1n^{1.1} + c_2$
 - $W(n) = W(\frac{n}{3}) + W(\frac{2n}{3}) + c_1n^{1.1} + c_2$
   - $C\texttt{(Root)} = c_1n^{1.1} + c_2$
+  - $C\texttt{(1st Level)} = [W(\frac{n}{9}) + W(\frac{2n}{9}) + c_1(\frac{n}{3})^{1.1} + c_2] + [W(\frac{2n}{9}) + W(\frac{4n}{9}) + c_1(\frac{2n}{3})^{1.1} + c_2] + c_1n^{1.1} + c_2$
+    - $ = W(\frac{n}{9}) + 2W(\frac{2n}{9}) + W(\frac{4n}{9}) + (\frac{1}{3^{1.1}}+ \frac{2^{1.1}}{3^{1.1}})c_1n^{1.1}+c_2 + c_1n^{1.1} + c_2$
+  - Cost is decreasing so this is root dominated.
+  - $\mathcal{O}(n^{1.1})$
 - $S(n) = S(\frac{n}{3}) + S(\frac{2n}{3}) + c_1n^{1.1} + c_2$
   - $C\texttt{(Root)} = c_1n^{1.1} + c_2$
+  - $C\texttt{(1st Level)} = [S(\frac{n}{9}) + S(\frac{2n}{9}) + c_1(\frac{n}{3})^{1.1} + c_2] + [S(\frac{2n}{9}) + S(\frac{4n}{9}) + c_1(\frac{2n}{3})^{1.1} + c_2] + c_1n^{1.1} + c_2$
+    - $ = S(\frac{n}{9}) + 2S(\frac{2n}{9}) + S(\frac{4n}{9}) + (\frac{1}{3^{1.1}}+ \frac{2^{1.1}}{3^{1.1}})c_1n^{1.1}+c_2 + c_1n^{1.1} + c_2$
+  - Cost is decreasing so this is root dominated.
+  - $\mathcal{O}(n^{1.1})$
 
 Between 3a - 3c, I would choose the algorithm presented in 3b. It has the most efficient span and work out of the three. 
 
@@ -167,8 +175,8 @@ c. Work and Span: $T(n) = 9T(\frac{n}{3}) + c_1n^2 + c_2$
 - $W(n) = 9W(\frac{n}{3}) + c_1n^2 + c_2$
   - $C\texttt{(Root)} = c_1n^2 + c_2$
   - $C\texttt{(1st Level)} = 9(9W(\frac{n}{3^2}) + c_1(\frac{n}{3})^2 + c_2) + c_1n^2 + c_2$
-    - $= 9^2W(\frac{n}{3^2}) + c_1\frac{9n^2}{3^2} + c_2 + c_1n^2 + c_2$
-    - $= 9^2W(\frac{n}{3^2}) + c_1n^2 + c_2 + c_1n^2 + c_2$
+    - $= 9^2W(\frac{n}{3^2}) + c_1\frac{9n^2}{3^2} + 9c_2 + c_1n^2 + c_2$
+    - $= 9^2W(\frac{n}{3^2}) + c_1n^2 + 9c_2 + c_1n^2 + c_2$
   - Cost is neither increasing or decreasing so this is balanced.
     - Number of levels is $\log_9 n$ and max cost per level is $n^2$
   - $\mathcal{O}(n^2 \log_9 n)$
