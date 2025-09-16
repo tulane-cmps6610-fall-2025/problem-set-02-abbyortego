@@ -1,7 +1,7 @@
   # CMPS 6610 Problem Set 02
 ## Answers
 
-**Name:**_________________________
+**Name:** Abby Ortego
 
 
 Place all written answers from `assignment-01.md` here for easier grading.
@@ -95,6 +95,91 @@ Place all written answers from `assignment-01.md` here for easier grading.
 <br>
 
 3. **More Algorithm Selection** 
+
+a. Work and Span: $T(n) = 2T(\frac{n}{5}) + n^2$ 
+- $W(n) = 2W(\frac{n}{5}) + n^2$
+  - $C\texttt{(Root)} = n^2$
+  - $C\texttt{(1st Level)} = 2(2T(\frac{n}{25}) + (\frac{n}{5})^2) + n^2$
+    - $= 2^2T(\frac{n}{25}) + \frac{2n^2}{25} + n^2$
+  - Cost is decreasing so this is root dominated. 
+  - $\mathcal{O}(n^2)$
+- $S(n) = S(\frac{n}{5}) + n^2$
+  - $C\texttt{(Root)} = n^2$
+  - $C\texttt{(1st Level)} = T(\frac{n}{25}) + (\frac{n}{5})^2 + n^2$
+    - $= T(\frac{n}{25}) + \frac{2n^2}{25} + n^2$
+  - Cost is decreasing so this is root dominated. 
+  - $\mathcal{O}(n^2)$
+
+b. Work and Span: $T(n) = T(n-1) + \log n$
+- $W(n) = W(n-1) + \log n$
+  - $C\texttt{(Root)} = \log n$
+  - $C\texttt{(1st Level)} = W(n-2) + \log n + \log n$
+  - Cost is neither increasing nor decreasing so this is balanced.
+    - Number of levels is $n$ and the max cost per level is $\log n$ 
+  - $\mathcal{O}(n \log n)$
+- $S(n) = S(n-1) + \log n$
+  - $C\texttt{(Root)} = \log n$
+  - $C\texttt{(1st Level)} = S(n-2) + \log n + \log n$
+  - Cost is neither increasing nor decreasing so this is balanced.
+    - Number of levels is $n$ and the max cost per level is $\log n$ 
+  - $\mathcal{O}(n \log n)$
+
+**c.** Work and Span: $T(n) = T(\frac{n}{3}) + T(\frac{2n}{3}) + c_1n^{1.1} + c_2$
+- $W(n) = W(\frac{n}{3}) + W(\frac{2n}{3}) + c_1n^{1.1} + c_2$
+  - $C\texttt{(Root)} = c_1n^{1.1} + c_2$
+- $S(n) = S(\frac{n}{3}) + S(\frac{2n}{3}) + c_1n^{1.1} + c_2$
+  - $C\texttt{(Root)} = c_1n^{1.1} + c_2$
+
+Between 3a - 3c, I would choose the algorithm presented in 3b. It has the most efficient span and work out of the three. 
+
+4. **Even More Algorithm Selection** 
+
+a. Work and Span: $T(n) = 5T(\frac{n}{2}) + n$
+- $W(n) = 5W(\frac{n}{2}) + n$
+  - $C\texttt{(Root)} = n$
+  - $C\texttt{(1st Level)} = 5(5W(\frac{n}{2^2}) + \frac{n}{2}) + n$
+    - $5^2W(\frac{n}{2^2}) + \frac{5n}{2} + n$
+  - Cost is increasing so this is leaf dominated. 
+    - Number of leaves $5^{\log_2 n} = n^{\log_2 5}$
+  - $\mathcal{O}(n^{\log_2 5})$
+- $S(n) = S(\frac{n}{2}) + n$
+  - $C\texttt{(Root)} = n$
+  - $C\texttt{(1st Level)} = S(\frac{n}{2^2}) + \frac{n}{2} + n$
+  - Cost is decreasing so this is root dominated. 
+  - $\mathcal{O}(n)$
+
+b. Work and Span: $T(n) = 2T(n-1) + c$
+- $W(n) = 2W(n-1) + c$
+  - $C\texttt{(Root)} = c$
+  - $C\texttt{(1st Level)} = 2(2W(n-2) + c) + c$
+    - $= 2^2W(n-2) + 2c + c$
+  - Cost is increasing so this is leaf dominated. 
+    - Number of leaves is $2n$
+  - $\mathcal{O}(n)$
+- $S(n) = S(n-1) + c$
+  - $C\texttt{(Root)} = c$
+  - $C\texttt{(1st Level)} = S(n-2) + c + c$
+  - Cost is neither increasing nor decreasing so this is balanced. 
+    - Number of levels is $n$ and the max cost per level is  c. 
+  - $\mathcal{O}(n)$
+
+c. Work and Span: $T(n) = 9T(\frac{n}{3}) + c_1n^2 + c_2$
+- $W(n) = 9W(\frac{n}{3}) + c_1n^2 + c_2$
+  - $C\texttt{(Root)} = c_1n^2 + c_2$
+  - $C\texttt{(1st Level)} = 9(9W(\frac{n}{3^2}) + c_1(\frac{n}{3})^2 + c_2) + c_1n^2 + c_2$
+    - $= 9^2W(\frac{n}{3^2}) + c_1\frac{9n^2}{3^2} + c_2 + c_1n^2 + c_2$
+    - $= 9^2W(\frac{n}{3^2}) + c_1n^2 + c_2 + c_1n^2 + c_2$
+  - Cost is neither increasing or decreasing so this is balanced.
+    - Number of levels is $\log_9 n$ and max cost per level is $n^2$
+  - $\mathcal{O}(n^2 \log_9 n)$
+- $S(n) = S(\frac{n}{3}) + c_1n^2 + c_2$
+  - $C\texttt{(Root)} = c_1n^2 + c_2$
+  - $C\texttt{(1st Level)} = S(\frac{n}{3^2}) + c_1(\frac{n}{3})^2 + c_2 + c_1n^2 + c_2$
+    - $= S(\frac{n}{3^2}) + c_1\frac{n^2}{3^2} + c_2 + c_1n^2 + c_2$
+  - Cost is decreasing so this is root dominated.
+  - $\mathcal{O}(n^2)$
+
+Between 4a-4c, I would be between choosing either the algorithm presented in 4a or 4b. They have similar spans, but since 4b also has better work, I'd most likely choose that algorithm. 
 
 4. **Integer Multiplication Timing Results**
 
