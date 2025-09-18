@@ -106,7 +106,7 @@ a. Work and Span: $T(n) = 2T(\frac{n}{5}) + n^2$
 - $S(n) = S(\frac{n}{5}) + n^2$
   - $C\texttt{(Root)} = n^2$
   - $C\texttt{(1st Level)} = T(\frac{n}{25}) + (\frac{n}{5})^2 + n^2$
-    - $= T(\frac{n}{25}) + \frac{2n^2}{25} + n^2$
+    - $= T(\frac{n}{25}) + \frac{n^2}{25} + n^2$
   - Cost is decreasing so this is root dominated. 
   - $\mathcal{O}(n^2)$
 
@@ -187,8 +187,23 @@ c. Work and Span: $T(n) = 9T(\frac{n}{3}) + c_1n^2 + c_2$
   - Cost is decreasing so this is root dominated.
   - $\mathcal{O}(n^2)$
 
-Between 4a-4c, I would be between choosing either the algorithm presented in 4a or 4b. They have similar spans, but since 4b also has better work, I'd most likely choose that algorithm. 
+Between 4a-4c, I would be between choosing either the algorithm presented in 4a or 4b. They have the same spans, but since 4b also has (much) better work, I'd most likely choose that algorithm. 
 
-4. **Integer Multiplication Timing Results**
+5. **Integer Multiplication Timing Results**
+- In `main.py`
 
-5. **Black Hats and White Hats**
+6. **Black Hats and White Hats**
+
+a. Assuming that white hats are the minority and black hats are the majority of a classroom then determining which students are white hats is not possible if using a pairwise test. 
+- If black hats have the majority, then at least one pair (depending on the ratio of black to white hats) during the pairwise testing will have to be comprised entirely of black hats. 
+- With the assumption that the black hats are conspiring and that they have a choice in telling the truth or not then the two black hats in the same pairing will work together and be capable of mimicking a black and white hat combination for responses. Since the black hats hold the majority, the double black hat pair would lead you to the wrong conclusion repeatedly.
+- Due to this, you cannot rely on a process of elimination method, necessary for pairwise testing,  to reduce down to a reliable white hat that can be used to point out the other white hats.  
+
+b. If, alternatively, white hats holds the majority then the problem size can be reduced by a constant fraction. 
+- If informed pairings are made based on prior responses, then at each iteration of interviews one of the two students can be eliminated, or properly categrozied as a white or black hat, effectively shrinking the pool of students to interview by a constant amount. 
+
+c. If white hats hold the majority and assuming the problem size will shrink by a constant factor, all white hats can be identified with $\mathcal{\theta}(n)$ pairwise interviews. 
+
+- Assuming the strategic elimination process was successful, you would be left with a reliable white hat. 
+- To discover *all* other white hats, you would have to ask the reliable white hat if each other student is a white or black hat. If $n$ represents the number of students, this can be done with $n-1$ interviews. 
+- Since you also had to interview the reliable white hat in addition, you are left with $n$ interviews or $\mathcal{\theta}(n)$ pairwise interviews. 

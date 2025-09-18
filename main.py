@@ -46,7 +46,6 @@ def pad(x,y):
     
 def quadratic_multiply(x, y):
     # print("x: ", x, "\ty: ", y)
-    ### TODO
 
     # base case: single digit >>> if one is 0 then 0, if both are 1 then 1
     if x.decimal_val == 0 or y.decimal_val == 0:
